@@ -1,12 +1,21 @@
-<div class="flex items-center justify-center w-4/5 mx-auto gap-x-6">
-    <input 
-        type="text"
-        placeholder="Ingrese una URL"
-        autocomplete="off"
-        class="w-3/4 p-2 text-2xl rounded-md"
-    >
-    
-    <button class="px-8 py-2 text-2xl tracking-wider uppercase button">
-        Generar
-    </button>
+<div class="flex flex-col items-center justify-center w-4/5 mx-auto gap-y-10">
+    <div class="flex items-center justify-center w-full gap-x-6">
+        <input 
+            type="text"
+            placeholder="Ingrese una URL"
+            autocomplete="off"
+            class="w-3/4 p-2 text-2xl rounded-md"
+            [(ngModel)]="nombreURL"
+        >
+        
+        <button
+            (click)="procesarURL()" 
+            class="px-8 py-2 text-2xl tracking-wider uppercase button">
+            Generar
+        </button>
+    </div>
+
+    <div class="w-1/2" *ngIf="processURL">
+        <app-short-url class="w-full" [(ngModel)]="shortURL"></app-short-url>
+    </div>
 </div>

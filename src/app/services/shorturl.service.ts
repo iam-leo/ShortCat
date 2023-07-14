@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ShorturlService {
-  shortURL = 'https://gotiny.cc/api';
+  shortURLBase = 'https://gotiny.cc/';
+  shortURLApi = 'https://gotiny.cc/api';
   
   constructor(private http: HttpClient) { }
 
@@ -14,6 +15,6 @@ export class ShorturlService {
     const body ={
       "input" : nombreUrl
     }
-    return this.http.post(this.shortURL, body)
+    return this.http.post(this.shortURLApi, body)
   }
 }

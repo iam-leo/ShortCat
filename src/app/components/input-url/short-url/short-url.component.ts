@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-short-url',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./short-url.component.css']
 })
 export class ShortUrlComponent {
+  @Input() shortedURL: string = '';
 
+  constructor(){
+    console.log(this.shortedURL);
+    
+  }
 }

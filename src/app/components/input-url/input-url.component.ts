@@ -14,10 +14,13 @@ export class InputUrlComponent {
   constructor(private _shortUrlService: ShorturlService){ }
 
   procesarURL(){
+    this.processURL = false;
+
     this._shortUrlService.getUrlShort(this.nombreURL)
       .subscribe(data => {
-        console.log(data);
-        
-      })
+        this.shortURL = this._shortUrlService.shortURLBase + data[0].code;
+        this.processURL = true;
+        console.log(this.shortURL);        
+      });
   }
 }

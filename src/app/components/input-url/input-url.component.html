@@ -16,6 +16,6 @@
     </div>
 
     <div class="w-1/2" *ngIf="processURL">
-        <app-short-url class="w-full" [(ngModel)]="shortURL"></app-short-url>
+        <app-short-url class="w-full" [shortedURL]="shortURL"></app-short-url>
     </div>
 </div>

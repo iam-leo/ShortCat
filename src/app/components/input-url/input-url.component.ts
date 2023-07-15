@@ -26,6 +26,8 @@ export class InputUrlComponent {
     //Activamos el Spinner
     if(isValid){
       this.loading = true;
+    }else{
+      return
     }
 
     //Hacemos la petición a la Api
@@ -49,12 +51,25 @@ export class InputUrlComponent {
 
   getURL(){
     this._shortUrlService.getUrlShort(this.nombreURL)
-      .subscribe(data => {
-        //Desactivamos el Spinner
-        this.loading = false;
-        this.shortURL = this._shortUrlService.shortURLBase + data[0].code;
-        this.processURL = true;
-        console.log(this.shortURL);        
+      .subscribe({
+        next: data => {          
+          //Desactivamos el Spinner
+          this.loading = false;
+          if(data[0]){
+            this.shortURL = this._shortUrlService.shortURLBase + data[0].code;
+            this.processURL = true;
+            console.log(this.shortURL);
+          }else{
+            this.textError = 'URL ingresada es inválida';
+            this.showError = true;
+            setTimeout(() => {
+              this.showError = false;
+            }, 3000);    
+          }
+        },
+        error: error => {
+            console.log(error);            
+        }
       });
   }
 }

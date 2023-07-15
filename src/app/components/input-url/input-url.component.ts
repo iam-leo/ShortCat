@@ -11,6 +11,8 @@ export class InputUrlComponent {
   shortURL = '';
   processURL = false;
   loading = false;
+  showError = false;
+  textError = ''
 
   constructor(private _shortUrlService: ShorturlService){ }
 
@@ -18,13 +20,31 @@ export class InputUrlComponent {
     //Ocultamos alguna url que haya quedado previo
     this.processURL = false;
 
+    //Validar input URL
+    const isValid = this.validarInput(this.nombreURL);
+
     //Activamos el Spinner
-    this.loading = true;
+    if(isValid){
+      this.loading = true;
+    }
 
     //Hacemos la petición a la Api
     setTimeout(() => {
       this.getURL();      
     }, 2000);
+  }
+
+  validarInput(url: string): boolean{
+    if(url === ''){
+      this.textError = 'Ingrese una URL';
+      this.showError = true;
+      setTimeout(() => {
+        this.showError = false;
+      }, 3000);
+      return false;
+    }else{
+      return true;
+    }
   }
 
   getURL(){

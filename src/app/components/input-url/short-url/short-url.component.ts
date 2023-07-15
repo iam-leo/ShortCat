@@ -8,8 +8,4 @@ import { Component, Input } from '@angular/core';
 export class ShortUrlComponent {
   @Input() shortedURL: string = '';
 
-  constructor(){
-    console.log(this.shortedURL);
-    
-  }
 }

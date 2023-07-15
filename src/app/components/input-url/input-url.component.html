@@ -15,6 +15,10 @@
         </button>
     </div>
 
+    <div class="relative mt-20" *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
+
     <div class="w-1/2" *ngIf="processURL">
         <app-short-url class="w-full" [shortedURL]="shortURL"></app-short-url>
     </div>

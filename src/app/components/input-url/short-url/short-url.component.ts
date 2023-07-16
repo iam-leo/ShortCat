@@ -7,5 +7,25 @@ import { Component, Input } from '@angular/core';
 })
 export class ShortUrlComponent {
   @Input() shortedURL: string = '';
+  isCopied = false;
+
+  copyToClipboard() {
+    this.isCopied = false;
+    navigator.clipboard.writeText(this.shortedURL)
+      .then(() => {
+        //Mostramos la notificación
+        this.isCopied = true;
+
+        //Ocultamos la notificación
+        setTimeout(() => {
+          this.isCopied = false;
+        }, 2500);
+      })
+      .catch((error) => {
+        console.error('Error al copiar el texto al portapapeles:', error);
+        this.isCopied = false;
+      });
+  }
+  
 
 }

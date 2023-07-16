@@ -10,6 +10,7 @@ export class ShortUrlComponent {
   isCopied = false;
 
   copyToClipboard() {
+    //Ocultamos cualquier notificación que haya quedado previa
     this.isCopied = false;
     navigator.clipboard.writeText(this.shortedURL)
       .then(() => {
@@ -26,6 +27,4 @@ export class ShortUrlComponent {
         this.isCopied = false;
       });
   }
-  
-
 }

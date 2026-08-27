@@ -6,14 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ShorturlService {
-  shortURLBase = 'https://gotiny.cc/';
-  shortURLApi = 'https://gotiny.cc/api';
+  shortURLApi = 'https://spoo.me/api/v1/shorten';
   
   constructor(private http: HttpClient) { }
 
   getUrlShort(nombreUrl: string): Observable<any> {
     const body ={
-      "input" : nombreUrl
+      "long_url" : nombreUrl
     }
     return this.http.post(this.shortURLApi, body)
   }

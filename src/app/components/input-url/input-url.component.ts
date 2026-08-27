@@ -55,8 +55,8 @@ export class InputUrlComponent {
         next: data => {          
           //Desactivamos el Spinner
           this.loading = false;
-          if(data[0]){
-            this.shortURL = this._shortUrlService.shortURLBase + data[0].code;
+          if(data?.short_url){
+            this.shortURL = data.short_url;
             this.processURL = true;
             console.log(this.shortURL);
           }else{
